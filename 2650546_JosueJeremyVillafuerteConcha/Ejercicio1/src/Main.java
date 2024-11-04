@@ -12,7 +12,7 @@ public class Main {
         System.out.print("Dias impares: ");
         for (int dia = 0; dia <= mes; dia++) {
             if (dia % 2 != 0){
-                System.out.print(dia + " ");
+                System.out.print((dia < mes - 1) ? (dia + " - "): dia);
             }
         }
     }

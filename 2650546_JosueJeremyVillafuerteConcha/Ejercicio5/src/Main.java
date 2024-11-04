@@ -1,32 +1,34 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Scanner;
 
 public class Main {
-    static Double _igv = 0.18;
-    static Double _interes = 0.255;
+    static double IGV = 0.18;
+    static double INTERES = 0.255;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Ingrese el monto del prestamo: ");
-        Double prestamo = scanner.nextDouble();
+        double prestamo = scanner.nextDouble();
 
-        Double valor_interes = calculoInteres(prestamo);
-        Double prestamoConInteres = prestamoConInteres(prestamo,valor_interes);
-        Double valor_igv = calculoIgv(prestamoConInteres);
+        double valor_interes = calculoInteres(prestamo);
+        double prestamoConInteres = prestamoConInteres(prestamo,valor_interes);
+        double valor_igv = calculoIgv(prestamoConInteres);
 
-        System.out.println("El valor de interes es: " + valor_interes + "\nEl valor del igv con el interes calculado es: " + valor_igv);
+        System.out.println("El valor de interes es: " + new BigDecimal(valor_interes).setScale(2, RoundingMode.HALF_UP) + "\nEl valor del igv con el interes calculado es: " + new BigDecimal(valor_igv).setScale(2,RoundingMode.HALF_UP));
     }
 
-    public static Double calculoInteres(Double prestamo){
-        return prestamo * _interes;
+    public static double calculoInteres(double prestamo){
+        return prestamo * INTERES;
     }
 
-    public static Double prestamoConInteres(Double prestamo, Double valor_interes){
+    public static double prestamoConInteres(double prestamo, double valor_interes){
         return prestamo + valor_interes;
     }
 
-    public static Double calculoIgv(Double prestamoConInteres){
-        return prestamoConInteres * _igv;
+    public static double calculoIgv(double prestamoConInteres){
+        return prestamoConInteres * IGV;
     }
 
 }
