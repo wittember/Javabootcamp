@@ -91,8 +91,8 @@ public class CajeroAutomatico {
         String sb = "\n--- Resumen de la Transacción ---\n" +
                 "Nombre: " + nombre + " " + apellido + "\n" +
                 "Monto retirado: " + formatoMoneda(montoRetirado) +
-                " (" + NumeroALetras.numeroALetras((int) montoRetirado) + " soles)" + "\n" +
-                "Saldo restante: " + formatoMoneda(saldo) + " soles" + "\n" +
+                " (" + NumeroALetras.numeroALetras(montoRetirado) + " nuevos soles)" + "\n" +
+                "Saldo restante: " + formatoMoneda(saldo) + " (" + NumeroALetras.numeroALetras(saldo) + " nuevos soles)" + "\n" +
                 "Fecha y hora de la transacción: " + FechaHora.obtenerFechaHoraActual("America/Lima") + "\n";
 
         System.out.println(sb);
