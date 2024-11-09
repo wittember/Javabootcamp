@@ -1,7 +1,5 @@
 package exercice1;
 import java.text.DecimalFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -19,16 +17,24 @@ public class CajeroAutomatico {
 
         // Validar número de tarjeta
         String numeroTarjeta;
+        int intentos = 0;
 
-        while (true) {
+
+        while (intentos < 4) {
             System.out.print("Ingrese el número de tarjeta (16 dígitos): ");
             numeroTarjeta = scanner.nextLine();
             Matcher matcher = pattern.matcher(numeroTarjeta);
 
-            if (matcher.matches()) { // Verificar si coincide con el patrón
+            if (matcher.matches()) { // Verificar coincidencia
                 break;
             } else {
+                intentos++; // Incrementar  intentos fallidos
                 System.out.println("Número de tarjeta inválido. Debe tener 16 dígitos.");
+
+                if (intentos == 4) {
+                    System.out.println("Demasiados intentos fallidos. El programa se cerrará.");
+                    System.exit(0); //Terminar el programa
+                }
             }
         }
 
@@ -87,7 +93,7 @@ public class CajeroAutomatico {
                 "Monto retirado: " + formatoMoneda(montoRetirado) +
                 " (" + NumeroALetras.numeroALetras((int) montoRetirado) + " soles)" + "\n" +
                 "Saldo restante: " + formatoMoneda(saldo) + " soles" + "\n" +
-                "Fecha y hora de la transacción: " + obtenerFechaHoraActual() + "\n";
+                "Fecha y hora de la transacción: " + FechaHora.obtenerFechaHoraActual("America/Lima") + "\n";
 
         System.out.println(sb);
     }
@@ -95,10 +101,5 @@ public class CajeroAutomatico {
     private static String formatoMoneda(double monto) {
         DecimalFormat formato = new DecimalFormat("#,##0.00");
         return formato.format(monto);
-    }
-    // Obtener fecha y hora actual
-    private static String obtenerFechaHoraActual() {
-        DateTimeFormatter formatoFechaHora = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return LocalDateTime.now().format(formatoFechaHora);
     }
 }
