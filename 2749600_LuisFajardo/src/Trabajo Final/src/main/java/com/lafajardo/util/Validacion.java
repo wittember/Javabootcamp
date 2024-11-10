@@ -76,7 +76,7 @@ public class Validacion {
     }
 
     public static boolean validarNombreOApellido(String texto, String tipo, int maxPalabras) {
-        // Validación de longitud mínima y caracteres permitidos
+        // Valida longitud mínima y caracteres permitidos
         if (texto.length() < 2) {
             System.out.println("El " + tipo + " debe tener al menos 2 letras. Por favor, inténtelo de nuevo.");
             return false;
@@ -85,14 +85,14 @@ public class Validacion {
             return false;
         }
 
-        // Dividir el texto en palabras y validar el número de palabras
+        // Divide el texto en palabras y validar el número de palabras
         String[] palabras = texto.split(" ");
         if (palabras.length > maxPalabras) {
             System.out.println("El " + tipo + " no debe tener más de " + maxPalabras + " palabras. Por favor, inténtelo de nuevo.");
             return false;
         }
 
-        // Validar que cada palabra no supere los 40 caracteres
+        // Valida que cada palabra no supere los 40 caracteres
         for (String palabra : palabras) {
             if (palabra.length() > 40) {
                 System.out.println("Cada palabra del " + tipo + " debe tener un máximo de 40 caracteres. Por favor, inténtelo de nuevo.");
