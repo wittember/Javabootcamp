@@ -130,7 +130,7 @@ public class CajeroAut extends Transaccion {
                 }
             } catch (java.util.InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, ingrese un número válido.");
-                scanner.next(); // Limpiar la entrada inválida para evitar un bucle infinito
+                scanner.next(); // Limpia la entrada inválida para evitar un bucle infinito
             }
         }
     }
